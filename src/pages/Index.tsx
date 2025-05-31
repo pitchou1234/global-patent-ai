@@ -11,14 +11,29 @@ import PlatformAccess from "@/components/PlatformAccess";
 import Closing from "@/components/Closing";
 import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollButton(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
+      {/* Animated background grid */}
+      <div className="fixed inset-0 bg-grid-white/[0.02] bg-grid-pattern opacity-20 animate-pulse"></div>
+      
       <Hero />
       <Problem />
       <Agitation />
@@ -30,13 +45,15 @@ const Index = () => {
       <PlatformAccess />
       <Closing />
       
-      {/* Scroll to top button */}
+      {/* Enhanced scroll to top button */}
       <Button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-50"
+        className={`fixed bottom-8 right-8 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white p-4 rounded-full shadow-2xl transition-all duration-500 z-50 ${
+          showScrollButton ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-16 opacity-0 scale-75'
+        }`}
         size="icon"
       >
-        <ArrowUp className="h-5 w-5" />
+        <ArrowUp className="h-6 w-6" />
       </Button>
     </div>
   );

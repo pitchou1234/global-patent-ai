@@ -1,72 +1,106 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Sparkles, Globe, Brain } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(59,130,246,0.2),transparent_70%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(16,185,129,0.2),transparent_70%)]"></div>
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950/30 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-32 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-emerald-500/5 to-transparent rounded-full animate-spin slow"></div>
+      </div>
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-emerald-400/30 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        <Badge className="mb-8 bg-emerald-600/20 text-emerald-300 border-emerald-600/30 px-4 py-2 text-sm font-medium">
-          AI-Powered Patent Intelligence
-        </Badge>
+        <div className="animate-fade-in">
+          <Badge className="mb-8 bg-gradient-to-r from-emerald-600/20 to-blue-600/20 text-emerald-300 border-emerald-600/30 px-6 py-3 text-lg font-medium backdrop-blur-sm">
+            <Sparkles className="w-5 h-5 mr-2" />
+            Enterprise Patent Intelligence
+          </Badge>
+        </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-slate-200 to-emerald-300 bg-clip-text text-transparent leading-tight">
-          LOustad Smart IP™
-        </h1>
+        <div className="animate-fade-in animation-delay-200">
+          <h1 className="text-6xl md:text-8xl font-black mb-8 bg-gradient-to-r from-white via-emerald-300 to-blue-400 bg-clip-text text-transparent leading-tight tracking-tight">
+            LOustad Smart IP™
+          </h1>
+        </div>
         
-        <p className="text-2xl md:text-3xl text-slate-300 font-light mb-4 max-w-4xl mx-auto">
-          Global Patent Intelligence in One Place
-        </p>
+        <div className="animate-fade-in animation-delay-400">
+          <p className="text-3xl md:text-4xl text-slate-200 font-light mb-6 max-w-5xl mx-auto leading-relaxed">
+            Global Patent Intelligence Platform
+          </p>
+        </div>
         
-        <p className="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto">
-          Semantic search. Global coverage. No subscriptions.<br />
-          Pay only for what you use.
-        </p>
+        <div className="animate-fade-in animation-delay-600">
+          <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-4xl mx-auto leading-relaxed">
+            AI-powered semantic search across global patent databases.<br />
+            <span className="text-emerald-400 font-semibold">Enterprise-grade precision</span> for mission-critical IP decisions.
+          </p>
+        </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 animate-fade-in animation-delay-800">
           <Button 
             size="lg" 
-            className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-12 py-6 text-xl font-bold rounded-xl shadow-2xl hover:shadow-emerald-500/25 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1"
           >
-            Start Searching Now
+            <Brain className="w-6 h-6 mr-3" />
+            Start Enterprise Search
           </Button>
           <Button 
             variant="outline" 
             size="lg"
-            className="border-slate-600 text-slate-300 hover:bg-slate-800 px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300"
+            className="border-2 border-slate-600 text-slate-300 hover:bg-slate-800/50 hover:border-emerald-600 px-12 py-6 text-xl font-bold rounded-xl transition-all duration-500 backdrop-blur-sm"
           >
-            Watch Demo
+            <Globe className="w-6 h-6 mr-3" />
+            View Global Coverage
           </Button>
         </div>
 
-        {/* Visual representation */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-2xl">
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mb-6">
-              {['USPTO', 'EPO', 'CNIPA', 'JPO', 'WIPO', 'INAPI'].map((db) => (
-                <div key={db} className="bg-slate-700/50 rounded-lg p-3 text-center">
-                  <div className="text-xs text-slate-400 font-medium">{db}</div>
+        {/* Enhanced visual representation */}
+        <div className="relative max-w-6xl mx-auto animate-fade-in animation-delay-1000">
+          <div className="bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-12 shadow-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-8">
+              {['USPTO', 'EPO', 'CNIPA', 'JPO', 'WIPO', 'INAPI'].map((db, index) => (
+                <div 
+                  key={db} 
+                  className="bg-gradient-to-br from-slate-700/30 to-slate-800/30 backdrop-blur-sm rounded-xl p-4 text-center border border-slate-600/30 hover:border-emerald-600/50 transition-all duration-300 hover:scale-105 animate-pulse"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div className="text-sm text-slate-300 font-bold">{db}</div>
+                  <div className="text-xs text-emerald-400 mt-1">Connected</div>
                 </div>
               ))}
             </div>
-            <div className="flex items-center justify-center mb-4">
-              <div className="h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent w-full"></div>
-              <div className="mx-4 bg-emerald-600 rounded-full p-2">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
+            
+            <div className="flex items-center justify-center mb-6">
+              <div className="h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent w-full animate-pulse"></div>
+              <div className="mx-6 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-full p-4 shadow-lg animate-bounce">
+                <Brain className="w-8 h-8 text-white" />
               </div>
-              <div className="h-px bg-gradient-to-r from-emerald-500 via-transparent to-transparent w-full"></div>
+              <div className="h-px bg-gradient-to-r from-emerald-500 via-transparent to-transparent w-full animate-pulse"></div>
             </div>
-            <div className="bg-emerald-600/20 border border-emerald-600/30 rounded-lg p-4">
-              <div className="text-emerald-300 font-semibold text-lg">Unified AI Search Engine</div>
-              <div className="text-slate-400 text-sm mt-1">Semantic understanding across all databases</div>
+            
+            <div className="bg-gradient-to-r from-emerald-600/20 to-blue-600/20 border border-emerald-600/30 rounded-2xl p-8 backdrop-blur-sm">
+              <div className="text-emerald-300 font-bold text-2xl mb-3">Unified AI Intelligence Engine</div>
+              <div className="text-slate-400 text-lg">Semantic understanding • Global coverage • Enterprise security</div>
             </div>
           </div>
         </div>
