@@ -1,8 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Crown, Zap, Shield, Target } from "lucide-react";
+import { Crown, Shield, Target } from "lucide-react";
 
 const Pricing = () => {
   const pricingTiers = [
@@ -11,28 +10,21 @@ const Pricing = () => {
       price: "$89",
       description: "Comprehensive semantic search across global databases with AI analysis",
       icon: Target,
-      color: "from-cyan-500/20 to-cyan-600/20 border-cyan-500/40"
+      color: "from-slate-800 to-slate-900 border-slate-700"
     },
     {
       feature: "Novelty Report",
       price: "$129",
       description: "Detailed patentability analysis with prior art citations and recommendations",
       icon: Shield,
-      color: "from-cyan-400/20 to-cyan-500/20 border-cyan-400/40"
-    },
-    {
-      feature: "Citation Draft",
-      price: "$69",
-      description: "AI-generated citation responses for patent applications and rejections",
-      icon: Zap,
-      color: "from-cyan-600/20 to-cyan-700/20 border-cyan-600/40"
+      color: "from-slate-700 to-slate-800 border-slate-600"
     },
     {
       feature: "Infringement Analysis",
       price: "$159",
       description: "Freedom-to-operate assessment with risk analysis and mitigation strategies",
       icon: Crown,
-      color: "from-cyan-300/20 to-cyan-400/20 border-cyan-300/40"
+      color: "from-slate-900 to-black border-slate-800"
     }
   ];
 
@@ -72,7 +64,7 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
           {pricingTiers.map((tier, index) => (
             <Card 
               key={index} 
